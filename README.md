@@ -60,7 +60,9 @@ export class AppComponent implements OnInit {
             selectAllText: 'Select All',
             unSelectAllText: 'UnSelect All',
             itemsShowLimit: 3,
-            allowSearchFilter: true
+            allowSearchFilter: true,
+            selectText: 'Select Item',
+            allowSelect: true
         };          
     }
     onItemSelect(item:any){
@@ -84,6 +86,14 @@ export class AppComponent implements OnInit {
 </ng-multiselect-dropdown>
 
 ```
+
+### Select Multiple Item by text
+
+set allowSelect = true
+
+type with comma(,) seperated value like (Mumbai,Pune) and then press tab key
+
+
 ### Settings
 
 | Setting         |Type    | Description            | Default Value |
@@ -103,6 +113,8 @@ export class AppComponent implements OnInit {
 | limitSelection | Number | Limit the selection of number of items from the dropdown list. Once the limit is reached, all unselected items gets disabled. | none |
 | searchPlaceholderText | String | Custom text for the search placeholder text. Default value would be 'Search' | 'Search' |
 | closeDropDownOnSelection | Boolean | Closes the dropdown when item is selected. applicable only in cas of single selection | false |
+| selectText | String | Custom text for the select placeholder text. Default value would be 'Select' | Select |
+| singleSelection | Boolean | Enable select option for the list. | true |
 
 ### Callback Methods
 - `onSelect` - Return the selected item on selection.
