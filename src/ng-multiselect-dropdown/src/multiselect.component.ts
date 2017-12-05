@@ -56,7 +56,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
         searchPlaceholderText: 'Search',
         closeDropDownOnSelection: false,
         selectText: 'Select',
-        allowSelect : true
+        allowSelect: true
     };
 
     @Input() placeholder = 'Select';
@@ -148,7 +148,7 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
             for (let i = 0; i < distinctValues.length; i++) {
                 if (!this.isSelectedByText(distinctValues[i])) {
                     for (let j = 0; j < this._data.length; j++) {
-                        if (distinctValues[i].toLowerCase() === this._data[j].text.toLowerCase()) {
+                        if (distinctValues[i].toLowerCase() === ('' + this._data[j].text).toLowerCase()) {
                             const limit = this.selectedItems.length < this._settings.limitSelection ? true : false;
                             if (this._settings.limitSelection) {
                                 if (limit) {
@@ -258,6 +258,11 @@ export class MultiSelectComponent implements OnInit, ControlValueAccessor {
     }
 
     addSelected(item: ListItem) {
+        for (let i = 0; i < this.selectedItems.length; i++) {
+            if (('' + this.selectedItems[i].text).toLowerCase() === ('' + item.text).toLowerCase()) {
+                return;
+            }
+        }
         if (this._settings.singleSelection) {
             this.selectedItems = [];
             this.selectedItems.push(item);
